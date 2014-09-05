@@ -6,9 +6,14 @@ set :repo_url, 'git@example.com:dannyboywho/practee.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
+set :pty, true
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/danny/practee'
+set :user, 'danny'
+set :ssh_options, {
+   # verbose: :debug,
+   user: fetch(:user)
+}
 
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 namespace :deploy do
